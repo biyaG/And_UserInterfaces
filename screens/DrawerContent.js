@@ -26,7 +26,7 @@ export function DrawerContent(props){
         <View style ={styles.userInfoSection}>
         <View>
         <Avatar.Image
-        source={require("../assets/propic.jpg")}
+        source={require("../assets/profile.png")}
         size={80}
         />
         <Title style={styles.title}>Biya Girma</Title>

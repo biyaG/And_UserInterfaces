@@ -19,7 +19,7 @@ const Profilescreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{marginTop:5}}>
             <View style={styles.profileImage}>
-            <Image source={require("../assets/propic.jpg")} style={styles.image} resizeMode="center"></Image>
+            <Image source={require("../assets/profile.png")} style={styles.image} resizeMode="center"></Image>
             </View>
             {/* <View style={styles.add}>
             <Feather.Button
@@ -31,12 +31,13 @@ const Profilescreen = () => {
             </View> */}
             </View>
             <View style={{alignSelf:"center", marginTop:10}}>
-            <Text style={styles.fullName}>Biya Girma</Text>
+            <Text style={styles.fullName}>Helen Meselu</Text>
             </View>
             <View style={styles.profileList}>  
                 <SectionList  
                     sections={[   
-                        {title: 'EMAIL', data: ['biyagirma@gmail.com']},  
+                        {title: 'EMAIL', data: ['helenmeselu@gmail.com']},  
+                        {title: 'USERNAME', data: ['helu']},  
                         {title: 'MOBILE NO.', data: ['+251911856475',]},  
                         {title: 'PASSWORD', data: ['Password',]}, 
                         {title: 'DATE JOINED', data: ['JUNE-8-2020',]}, 

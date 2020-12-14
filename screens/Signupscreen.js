@@ -16,7 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
-const Loginscreen = ({navigation}) => {
+const SignupScreen = ({navigation}) => {
 
     const [data, setData] = React.useState({
         username: '',
@@ -97,14 +97,13 @@ const Loginscreen = ({navigation}) => {
                 />
 
                 <TextInput 
-                    placeholder="Full Name"
+                    placeholder="User Name"
                     style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
             </View>
 
-{/* 
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -113,16 +112,28 @@ const Loginscreen = ({navigation}) => {
                 />
 
                 <TextInput 
-                    placeholder="Your LastName"
+                    placeholder="First Name"
                     style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
-            </View> */}
+            </View>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color="#05375a"
+                    size={20}
+                />
 
+                <TextInput 
+                    placeholder="Last Name"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+            </View>
 
-
-
+           
 
             <View style={styles.action}>
                 <FontAwesome 
@@ -185,6 +196,20 @@ const Loginscreen = ({navigation}) => {
                     }
                 </TouchableOpacity>
             </View>
+            <View style={styles.action}>
+            <Feather 
+                    name="lock"
+                    color="#05375a"
+                    size={20}
+                />
+            <TextInput 
+                    placeholder="Confirm Password"
+                    secureTextEntry={data.secureTextEntry ? true : false}
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    onChangeText={(val) => handlePasswordChange(val)}
+                />
+            </View>
 
             <View style={styles.textPrivate}>
                 <Text style={styles.color_textPrivate}>
@@ -229,7 +254,7 @@ const Loginscreen = ({navigation}) => {
     );
 };
 
-export default Loginscreen;
+export default SignupScreen;
 
 const styles = StyleSheet.create({
     container: {

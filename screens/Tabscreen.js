@@ -6,6 +6,7 @@ import Notification from './Notification';
 import Sharescreen from './Sharescreen';
 import Privatescreen from './Privatescreen';
 import ScheduleScreen from './ScheduleScreen';
+//import editProfile from './editProfile';
 import Rootstackscreen from './Rootstackscreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -18,34 +19,35 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import editProfile from './editProfile';
 
 
 const Drawer = createDrawerNavigator();
-const PrivateStack = createStackNavigator();
+const editStack = createStackNavigator();
 const ScheduleStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
-// const PrivateStackScreen = ({navigation}) =>(
-//   <PrivateStack.Navigator screenOptions={{
-//     headerStyle:{
-//       backgroundColor:'#1167b1',
-//     },
-//     headerTintColor:'#fff',
+const editProfileStack = ({navigation}) =>(
+  <editStack.Navigator screenOptions={{
+    headerStyle:{
+      backgroundColor:'#1167b1',
+    },
+    headerTintColor:'#fff',
 
-//   }}>
-//   <PrivateStack.Screen name="Private" component={Privatescreen}
-//     options={{
-//       title:'Private',
-//       headerLeft:() =>(
-//       <FontAwesome.Button name="bars" size={25}
-//       backgroundColor="#1167b1" onPress={()=> navigation.openDrawer()}/>
-//     )
+  }}>
+  <editStack.Screen name="Private" component={editProfile}
+    options={{
+      title:'Private',
+      headerLeft:() =>(
+      <FontAwesome.Button name="bars" size={25}
+      backgroundColor="#1167b1" onPress={()=> navigation.openDrawer()}/>
+    )
     
-//     }}
-//   />
-//   </PrivateStack.Navigator>
-// )
+    }}
+  />
+  </editStack.Navigator>
+)
 const ProfileStackScreen = ({navigation}) =>(
   <ProfileStack.Navigator screenOptions={{
     headerStyle:{
@@ -64,7 +66,7 @@ const ProfileStackScreen = ({navigation}) =>(
     //add onpress to go to the edit page
     headerRight:() =>(
       <Feather.Button name="edit-3" size={30}
-      backgroundColor="#1167b1" onPress={()=> navigation.openDrawer()}/>
+      backgroundColor="#1167b1" onPress={()=> navigation.navigate('editProfile')}/>
     )
     }}
   />
@@ -121,7 +123,7 @@ render(){
         name="Ride" 
         component={Privatescreen}
         options={{
-          tabBarLabel: 'Private',
+          tabBarLabel: 'Ride',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="car" color={color} size={26} />
             ),
@@ -147,16 +149,6 @@ render(){
         }}/>
         
     </MaterialBottomTabs.Navigator>
-
-
-  // createHomeStack = () =>
-  //   <Stack.Navigator>
-  //       <Stack.Screen name="Profile" children={createBottomTabs} />
-  //       {/* <Stack.Screen name="Notification" component={Notification} />
-  //       <Stack.Screen name="Private" component={Privatescreen} />
-  //       <Stack.Screen name="Schedule" component={ScheduleScreen} />
-  //       <Stack.Screen name="Share" component={Sharescreen} />    */}
-  //   </Stack.Navigator>
  
 
   return(

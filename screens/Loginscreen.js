@@ -23,40 +23,40 @@ const Loginscreen = ({navigation}) => {
         password: '',
         check_textInputChange: false,
         secureTextEntry: true,
-        isValidEmail: true,
+        isValidUserName: true,
         isValidPassword:true,
 
     });
 
     const textInputChange = (val) => {
         //let arr=['@','com']
-        if( val.trim().length > 4 ) {
+        if( val.trim().length >= 4 ) {
             setData({
                 ...data,
                 username: val,
                 check_textInputChange: true,
-                isValidEmail:true
+                isValidUserName:true
             });
         } else {
             setData({
                 ...data,
                 username: val,
                 check_textInputChange: false,
-                isValidEmail:false
+                isValidUserName:false
             });
         }
     }
-    const handleValidEmail=(val)=>{
+    const handleValidUserName=(val)=>{
         let arr=['@','com']
-        if(val.trim().length >= 6){
+        if(val.trim().length >= 4){
             setData({
                 ...data,
-                isValidEmail:true
+                isValidUserName:true
             });
         }else{
             setData({
                 ...data,
-                isValidEmail:false
+                isValidUserName:false
             })
         }
     }
@@ -117,11 +117,11 @@ const Loginscreen = ({navigation}) => {
                 />
 
                 <TextInput 
-                    placeholder="Your Email"
+                    placeholder="Your Username"
                     style={styles.textInput}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
-                    onEndEditing={(e)=>handleValidEmail(e.nativeEvent.text)}
+                    onEndEditing={(e)=>handleValidUserName(e.nativeEvent.text)}
                 />
                 {data.check_textInputChange ?
 
@@ -137,9 +137,9 @@ const Loginscreen = ({navigation}) => {
                 :null}
                 
             </View>
-            {data.isValidEmail ? null :
+            {data.isValidUserName ? null :
                 <Animatable.View animation="fadeInLeft" duration={500}>
-                <Text style={styles.errorMsg}>Your Email is invalid</Text>
+                <Text style={styles.errorMsg}>Your Username shall be 4 or more characters</Text>
                 </Animatable.View>
             }
 
