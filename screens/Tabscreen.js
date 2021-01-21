@@ -27,7 +27,7 @@ const editStack = createStackNavigator();
 const ScheduleStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
-
+const PrivateStack = createStackNavigator();
 const editProfileStack = ({navigation}) =>(
   <editStack.Navigator screenOptions={{
     headerStyle:{
@@ -48,6 +48,26 @@ const editProfileStack = ({navigation}) =>(
   />
   </editStack.Navigator>
 )
+const PrivateStackScreen = ({navigation}) =>(
+  <PrivateStack.Navigator screenOptions={{
+    headerStyle:{
+      backgroundColor:'#1167b1',
+    },
+    headerTintColor:'#fff',
+
+  }}>
+  <PrivateStack.Screen name="Profile" component={Privatescreen}
+    options={{
+      title:'Ride',
+      headerLeft:() =>(
+      <FontAwesome.Button name="bars" size={25}
+      backgroundColor="#1167b1" onPress={()=> navigation.openDrawer()}/>
+    ),
+    }}
+  />
+  </PrivateStack.Navigator>
+)
+
 const ProfileStackScreen = ({navigation}) =>(
   <ProfileStack.Navigator screenOptions={{
     headerStyle:{
@@ -121,7 +141,7 @@ render(){
         
         <MaterialBottomTabs.Screen 
         name="Ride" 
-        component={Privatescreen}
+        component={PrivateStackScreen}
         options={{
           tabBarLabel: 'Ride',
           tabBarIcon: ({ color }) => (

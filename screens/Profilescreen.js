@@ -9,7 +9,7 @@ import { StyleSheet,
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { ScrollView } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-
+import {store} from '../store.js'
 
 
 const Profilescreen = () => {
@@ -31,16 +31,16 @@ const Profilescreen = () => {
             </View> */}
             </View>
             <View style={{alignSelf:"center", marginTop:10}}>
-            <Text style={styles.fullName}>Helen Meselu</Text>
+            <Text style={styles.fullName}>{store.user.first_name} {store.user.last_name}</Text>
             </View>
             <View style={styles.profileList}>  
                 <SectionList  
                     sections={[   
-                        {title: 'EMAIL', data: ['helenmeselu@gmail.com']},  
-                        {title: 'USERNAME', data: ['helu']},  
-                        {title: 'MOBILE NO.', data: ['+251911856475',]},  
-                        {title: 'PASSWORD', data: ['Password',]}, 
-                        {title: 'DATE JOINED', data: ['JUNE-8-2020',]}, 
+                        {title: 'EMAIL', data:[store.user.email]},  
+                        {title: 'USERNAME', data: [store.user.username]},  
+                        {title: 'MOBILE NO.', data: [store.user.phone_number]},  
+                        // {title: 'PASSWORD', data: ['Password',]}, 
+                        {title: 'DATE JOINED', data: [store.user.date_joined]}, 
                     ]}  
                     renderItem={({item}) => <Text style = {styles.item}>{item}</Text>}  
                     renderSectionHeader={({section}) => <Text style = {styles.sectionHeader}>{section.title}</Text>}  

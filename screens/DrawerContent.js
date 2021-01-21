@@ -4,6 +4,7 @@ import{
     DrawerContentScrollView,
     DrawerItem
 } from '@react-navigation/drawer';
+import { useNavigation } from '@react-navigation/native';
 import {
     Avatar,
     Title,
@@ -15,9 +16,35 @@ import {
 } from 'react-native-paper';
 import { MaterialCommunityIcons } from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
+import axios from 'axios';
+import {store} from '../store.js'
+import {ip} from '../helper.js'
+import Loginscreen from './Loginscreen'
 
 
 export function DrawerContent(props){
+  const navigation = useNavigation();
+  const handleLogout = ()=> {
+    console.log(store.token)
+    // token = store.token
+    // store = {}
+    console.log(store)
+    axios.post(`http://${ip}/rest-auth/logout/`, {
+      headers: {
+        'Authorization': `Token ${store.token}`
+      }
+    }).then(response=>{
+      console.log(response)
+      // store = {}
+      navigation.navigate('Loginscreen')
+    }).catch(error => console.log(error));
+        // this.props.navigation.navigate('Tabscreen', { screen: 'ScheduleScreen' })
+        // console.log(`http://${ip}/rest-auth/logout/`, 'hhhhhh')
+        // console.log(store)
+        
+      
+  }
+
     return(
         <View style={{flex:1}}>
         <DrawerContentScrollView {...props}
@@ -55,7 +82,7 @@ export function DrawerContent(props){
                 />
                             )}
             label="Profile"
-            onPress={() => {}}
+            onPress={() =>  navigation.navigate('Profile')}
         />
         <DrawerItem
            icon={({color, size}) => (
@@ -100,7 +127,7 @@ export function DrawerContent(props){
                 />
                             )}
             label="Sign out"
-            onPress={() => {}}
+            onPress={handleLogout}
             />
         </Drawer.Section>
         </View>
